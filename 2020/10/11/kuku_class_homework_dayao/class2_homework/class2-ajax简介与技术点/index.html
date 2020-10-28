@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="生来孤岛，何惧孤独" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    AJAX简介与技术点 |  羽蒙
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="羽蒙" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-kuku_class_homework_dayao/class2_homework/class2-ajax简介与技术点"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  AJAX简介与技术点
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/10/11/kuku_class_homework_dayao/class2_homework/class2-ajax%E7%AE%80%E4%BB%8B%E4%B8%8E%E6%8A%80%E6%9C%AF%E7%82%B9/" class="article-date">
+  <time datetime="2020-10-11T10:51:26.000Z" itemprop="datePublished">2020-10-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/kuku-class-homework-dayao/">kuku-class-homework-dayao</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">14 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="AJAX简介与技术点"><a href="#AJAX简介与技术点" class="headerlink" title="AJAX简介与技术点"></a>AJAX简介与技术点</h1><h2 id="1-1、ajax简介"><a href="#1-1、ajax简介" class="headerlink" title="1-1、ajax简介"></a>1-1、ajax简介</h2><p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</p>
+<p>AJAX 不是新的编程语言，而是一种使用现有标准的、用于创建快速动态网页的新方法。</p>
+<p>AJAX 是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下。</p>
+<h2 id="1-2、Ajax所包含的技术"><a href="#1-2、Ajax所包含的技术" class="headerlink" title="1-2、Ajax所包含的技术"></a>1-2、Ajax所包含的技术</h2><p>大家都知道ajax并非一种新的技术，而是几种原有技术的结合体。它由下列技术组合而成。</p>
+<blockquote>
+<p>1.使用CSS和XHTML来表示。</p>
+<p>2.使用DOM模型来交互和动态显示。</p>
+<p>3.使用XMLHttpRequest来和服务器进行异步通信。</p>
+<p>4.使用javascript来绑定和调用。</p>
+</blockquote>
+<p>AJAX 的核心是 XMLHttpRequest 对象。</p>
+<p>不同的浏览器创建 XMLHttpRequest 对象的方法是有差异的。</p>
+<h2 id="1-3、为什么需要使用ajax"><a href="#1-3、为什么需要使用ajax" class="headerlink" title="1-3、为什么需要使用ajax"></a>1-3、为什么需要使用ajax</h2><p>ajax主要是实现页面和web服务器之间数据的异步传输。简单来说，不采用ajax的页面，当用户在页面发起请求时，就要进行整个页面的刷新，刷新快慢取决于服务器的处理快慢。在这个过程中用户必须得等待，不能进行其他操作。也就是同步的方式。客户端和服务端传递了很多不需要的数据。效率低，用户体验差。</p>
+<ul>
+<li>a、采用ajax的页面，可以实现页面的局部更新，而不是整个页面的更新；</li>
+<li>b、并且发起请求后，用户还可以进行页面上的其他操作。这就是异步的方式。</li>
+<li>c、客户端和服务端间只传递需要的数据，效率高，用户体验性好。</li>
+<li>d、并且Ajax引擎在客户端运行，承担了一部分本来由服务器承担的工作，从而减少了大用户量下的服务器负载。</li>
+</ul>
+<h2 id="1-4、Ajax的工作原理"><a href="#1-4、Ajax的工作原理" class="headerlink" title="1-4、Ajax的工作原理"></a>1-4、Ajax的工作原理</h2><p>Ajax的工作原理相当于在用户和服务器之间加了—个中间层(AJAX引擎)，使用户操作与服务器响应异步化。并不是所有的用户请求都提交给服务器。像—些数据验证和数据处理等都交给Ajax引擎自己来做,，只有确定需要从服务器读取新数据时再由Ajax引擎代为向服务器提交请求。</p>
+<p>AJAX是通过浏览器的内置对象XHMHttpResquest来发送异步请求的，异步请求不会妨碍客户端的任何操作。</p>
+<ul>
+<li><p>异步：</p>
+<p>XHR相当于是一个通信兵，来负责客户端与服务器之间的通信传输。举个栗子：</p>
+<p>要打仗了，前方阵地（客服端）不可能只等着通信兵（XHR）传递消息其他什么也不干吧，所以前方阵地还在干着自己的事情然后派通信兵去请求后方指挥部（服务器）的命令，指挥部下达命令指挥，通信兵再把命令传到前方阵地，然后前方阵地再执行命令相关的操作（客户端把数据渲染到页面），这也就是Ajax的异步原理。</p>
+</li>
+<li><p>同步：</p>
+<p>所谓的同步就是前方阵地和通信兵一起去向服务器请求数据，直到通信兵请求到数据，我才开始渲染页面，在请求的过程中页面一直是白屏等待的。</p>
+</li>
+</ul>
+<h2 id="1-5、XMLHttpRequest-对象的三个常用的属性"><a href="#1-5、XMLHttpRequest-对象的三个常用的属性" class="headerlink" title="1-5、XMLHttpRequest 对象的三个常用的属性"></a>1-5、XMLHttpRequest 对象的三个常用的属性</h2><h3 id="1-onreadystatechange-属性"><a href="#1-onreadystatechange-属性" class="headerlink" title="1. onreadystatechange 属性"></a>1. onreadystatechange 属性</h3><p>onreadystatechange 属性存有处理服务器响应的函数。<br>下面的代码定义一个空的函数，可同时对 onreadystatechange 属性进行设置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//我们需要在这写一些代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-readyState-属性"><a href="#2-readyState-属性" class="headerlink" title="2. readyState 属性"></a><strong>2. readyState 属性</strong></h3><p>readyState 属性存有服务器响应的状态信息。每当 readyState 改变时，onreadystatechange 函数就会被执行。<br>readyState 属性可能的值：</p>
+<table>
+<thead>
+<tr>
+<th align="left">状态</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">请求未初始化（在调用 open() 之前）</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">请求已提出（调用 send() 之前）</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">请求已发送（这里通常可以从响应得到内容头部）</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">请求处理中（响应中通常有部分数据可用，但是服务器还没有完成响应）</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">请求已完成（可以访问服务器响应并使用它）</td>
+</tr>
+</tbody></table>
+<p>我们要向这个 onreadystatechange 函数添加一条 If 语句，来测试我们的响应是否已完成(意味着可获得数据)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xmlHttp.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="comment">//从服务器的response获得数据</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-responseText-属性"><a href="#3-responseText-属性" class="headerlink" title="3. responseText 属性"></a><strong>3. responseText 属性</strong></h3><p>可以通过 responseText 属性来取回由服务器返回的数据。<br>在我们的代码中，我们将把时间文本框的值设置为等于 responseText：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xmlHttp.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="built_in">document</span>.myForm.time.value = xmlHttp.responseText;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-6-xmlhttprequst的方法"><a href="#1-6-xmlhttprequst的方法" class="headerlink" title="1-6 xmlhttprequst的方法"></a>1-6 xmlhttprequst的方法</h2><h3 id="1-open-方法"><a href="#1-open-方法" class="headerlink" title="1. open() 方法"></a><strong>1. open() 方法</strong></h3><p>open() 有三个参数。第一个参数定义发送请求所使用的方法，第二个参数规定服务器端脚本的URL，第三个参数规定应当对请求进行异步地处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.open(<span class="string">&quot;GET&quot;</span>,<span class="string">&quot;test.php&quot;</span>,<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-send-方法"><a href="#2-send-方法" class="headerlink" title="2. send() 方法"></a><strong>2. send() 方法</strong></h3><p>send() 方法将请求送往服务器。如果我们假设 HTML 文件和 PHP 文件位于相同的目录，那么代码是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-7Ajax编程步骤"><a href="#1-7Ajax编程步骤" class="headerlink" title="1-7Ajax编程步骤"></a>1-7Ajax编程步骤</h2><p>为了方便理解，给AJAX统一了一个流程，要想实现AJAX，就要按照以后步骤走：</p>
+<blockquote>
+<ol>
+<li>创建XMLHttpRequest对象。</li>
+<li>设置请求方式。</li>
+<li>调用回调函数。</li>
+<li>发送请求。</li>
+</ol>
+</blockquote>
+<p>下面来看下具体步骤：</p>
+<h3 id="1-创建XMLHttpRequest对象"><a href="#1-创建XMLHttpRequest对象" class="headerlink" title="1. 创建XMLHttpRequest对象"></a>1. 创建XMLHttpRequest对象</h3><p>创建XMLHttp对象的语法是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xmlHttp=<span class="keyword">new</span> XMLHttpRequest();</span><br></pre></td></tr></table></figure>
+
+<p>如果是IE5或者IE6浏览器，则使用<strong>ActiveX</strong>对象，创建方法是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xmlHttp=<span class="keyword">new</span> ActiveXObject(<span class="string">&quot;Microsoft.XMLHTTP&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>一般我们手写AJAX的时候，首先要判断该浏览器是否支持XMLHttpRequest对象，如果支持则创建该对象，如果不支持则创建ActiveX对象。JS代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一步：创建XMLHttpRequest对象</span></span><br><span class="line"><span class="keyword">var</span> xmlHttp;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;            <span class="comment">//非IE</span></span><br><span class="line">    xmlHttp = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123;       <span class="comment">//IE</span></span><br><span class="line">    xmlHttp = <span class="keyword">new</span> ActiveXObject(<span class="string">&quot;Microsoft.XMLHTTP&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-设置请求方式"><a href="#2-设置请求方式" class="headerlink" title="2. 设置请求方式"></a>2. 设置请求方式</h3><p>在WEB开发中，请求有两种形式，一个是get，一个是post，所以在这里需要设置一下具体使用哪个请求，XMLHttpRequest对象的open()方法就是来设置请求方式的。<br>open()方法</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>规定请求的类型、URL 以及是否异步处理请求</td>
+<td>参数1：设置请求类型（GET 或 POST），GET与POST的区别请自己百度一下，这里不做解释； 参数2：文件在服务器上的位置； 参数3：是否异步处理请求，是为true，否为false。</td>
+</tr>
+</tbody></table>
+<p>如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第二步：设置和服务器端交互的相应参数，向路径http://localhost:8080/JsLearning3/getAjax准备发送数据</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">&quot;http://localhost:8080/JsLearning3/getAjax&quot;</span>;</span><br><span class="line">xmlHttp.open(<span class="string">&quot;POST&quot;</span>, url, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="GET-还是-POST？"><a href="#GET-还是-POST？" class="headerlink" title="GET 还是 POST？"></a><strong>GET 还是 POST？</strong></h4><p>与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。然而，在以下情况中，请使用 POST 请求：</p>
+<blockquote>
+<p>无法使用缓存文件（更新服务器上的文件或数据库）<br>向服务器发送大量数据（POST 没有数据量限制）<br>发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠</p>
+</blockquote>
+<h4 id="异步-True-或-False？"><a href="#异步-True-或-False？" class="headerlink" title="异步 - True 或 False？"></a><strong>异步 - True 或 False？</strong></h4><p>​    AJAX 指的是异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。XMLHttpRequest 对象如果要用于 AJAX 的话，其 open() 方法的 async 参数必须设置为 true：对于 web 开发人员来说，发送异步请求是一个巨大的进步。很多在服务器执行的任务都相当费时。AJAX 出现之前，这可能会引起应用程序挂起或停止。<br>通过 AJAX，JavaScript 无需等待服务器的响应，而是：<br>在等待服务器响应时执行其他脚本<br>当响应就绪后对响应进行处理</p>
+<h3 id="3-调用回调函数"><a href="#3-调用回调函数" class="headerlink" title="3. 调用回调函数"></a>3. 调用回调函数</h3><p>如果在上一步中open方法的第三个参数选择的是true，那么当前就是异步请求，这个时候需要写一个回调函数，XMLHttpRequest对象有一个onreadystatechange属性，这个属性返回的是一个匿名的方法，所以回调函数就在这里写xmlHttp.onreadystatechange=function{},function{}内部就是回调函数的内容。所谓回调函数，就是请求在后台处理完，再返回到前台所实现的功能。在这个例子里，我们的回调函数要实现的功能就是接收后台处理后反馈给前台的数据，然后将这个数据显示到指定的div上。因为从后台返回的数据可能是错误的，所以在回调函数中首先要判断后台返回的信息是否正确，如果正确才可以继续执行。代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第三步：注册回调函数</span></span><br><span class="line">xmlHttp.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xmlHttp.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (xmlHttp.status == <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> obj = <span class="built_in">document</span>.getElementById(id);</span><br><span class="line">            obj.innerHTML = xmlHttp.responseText;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            alert(<span class="string">&quot;AJAX服务器返回错误！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面代码中，xmlHttp.readyState是存有XMLHttpRequest 的状态。从 0 到 4 发生变化。0: 请求未初始化。1: 服务器连接已建立。2: 请求已接收。3: 请求处理中。4: 请求已完成，且响应已就绪。所以这里我们判断只有当xmlHttp.readyState为4的时候才可以继续执行。</p>
+<p>xmlHttp.status是服务器返回的结果，其中200代表正确。404代表未找到页面，所以这里我们判断只有当xmlHttp.status等于200的时候才可以继续执行。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = document.getElementById(id);</span><br><span class="line">obj.innerHTML = xmlHttp.responseText;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码就是回调函数的核心内容，就是获取后台返回的数据，然后将这个数据赋值给id为testid的div。xmlHttp对象有两个属性都可以获取后台返回的数据，分别是：responseText和responseXML，其中responseText是用来获得<strong>字符串形式</strong>的响应数据，responseXML是用来获得 <strong>XML 形式</strong>的响应数据。至于选择哪一个是取决于后台给返回的数据的，这个例子里我们只是显示一条字符串数据所以选择的是responseText。</p>
+<h4 id="AJAX状态值与状态码区别"><a href="#AJAX状态值与状态码区别" class="headerlink" title="AJAX状态值与状态码区别"></a><strong>AJAX状态值与状态码区别</strong></h4><p> <strong><em>AJAX状态值是指</em></strong>，运行AJAX所经历过的几种状态，无论访问是否成功都将响应的步骤，可以理解成为AJAX运行步骤。如：正在发送，正在响应等，由AJAX对象与服务器交互时所得；使用“ajax.readyState”获得。（由数字1~4单位数字组成）<br><strong>AJAX状态码是指</strong>，无论AJAX访问是否成功，由HTTP协议根据所提交的信息，服务器所返回的HTTP头信息代码，该信息使用“ajax.status”所获得；（由数字1XX,2XX三位数字组成，详细查看RFC）<br>这就是我们在使用AJAX时为什么采用下面的方式判断所获得的信息是否正确的原因。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">if</span>(<span class="params">ajax.readyState == <span class="number">4</span> &amp;&amp; ajax.status == <span class="number">200</span></span>)</span> &#123;。。。。);&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="AJAX运行步骤与状态值说明"><a href="#AJAX运行步骤与状态值说明" class="headerlink" title="AJAX运行步骤与状态值说明"></a><strong>AJAX运行步骤与状态值说明</strong></h4><p>在AJAX实际运行当中，对于访问XMLHttpRequest（XHR）时并不是一次完成的，而是分别经历了多种状态后取得的结果，对于这种状态在AJAX中共有5种，分别是：<br>0 - (未初始化)还没有调用send()方法<br>1 - (载入)已调用send()方法，正在发送请求<br>2 - (载入完成)send()方法执行完成，<br>3 - (交互)正在解析响应内容<br>4 - (完成)响应内容解析完成，可以在客户端调用了<br>对于上面的状态，其中“0”状态是在定义后自动具有的状态值，而对于成功访问的状态（得到信息）我们大多数采用“4”进行判断。</p>
+<h4 id="AJAX状态码说明"><a href="#AJAX状态码说明" class="headerlink" title="AJAX状态码说明"></a><strong>AJAX状态码说明</strong></h4><p>1：请求收到，继续处理<br>2：操作成功收到，分析、接受<br>3：完成此请求必须进一步处理<br>4：请求包含一个错误语法或不能完成<br>5：服务器执行一个完全有效请求失败</p>
+<p>再具体就如下：</p>
+<p>100——客户必须继续发出请求<br>101——客户要求服务器根据请求转换HTTP协议版本<br>200——交易成功<br>201——提示知道新文件的URL<br>202——接受和处理、但处理未完成<br>203——返回信息不确定或不完整<br>204——请求收到，但返回信息为空<br>205——服务器完成了请求，用户代理必须复位当前已经浏览过的文件<br>206——服务器已经完成了部分用户的GET请求<br>300——请求的资源可在多处得到<br>301——删除请求数据<br>302——在其他地址发现了请求数据<br>303——建议客户访问其他URL或访问方式<br>304——客户端已经执行了GET，但文件未变化<br>305——请求的资源必须从服务器指定的地址得到<br>306——前一版本HTTP中使用的代码，现行版本中不再使用<br>307——申明请求的资源临时性删除<br>400——错误请求，如语法错误<br>401——请求授权失败<br>402——保留有效ChargeTo头响应<br>403——请求不允许<br>404——没有发现文件、查询或URl<br>405——用户在Request-Line字段定义的方法不允许<br>406——根据用户发送的Accept拖，请求资源不可访问<br>407——类似401，用户必须首先在代理服务器上得到授权<br>408——客户端没有在用户指定的饿时间内完成请求<br>409——对当前资源状态，请求不能完成<br>410——服务器上不再有此资源且无进一步的参考地址<br>411——服务器拒绝用户定义的Content-Length属性请求<br>412——一个或多个请求头字段在当前请求中错误<br>413——请求的资源大于服务器允许的大小<br>414——请求的资源URL长于服务器允许的长度<br>415——请求资源不支持请求项目格式<br>416——请求中包含Range请求头字段，在当前请求资源范围内没有range指示值，请求也不包含If-Range请求头字段<br>417——服务器不满足请求Expect头字段指定的期望值，如果是代理服务器，可能是下一级服务器不能满足请求<br>500——服务器产生内部错误<br>501——服务器不支持请求的函数<br>502——服务器暂时不可用，有时是为了防止发生系统过载<br>503——服务器过载或暂停维修<br>504——关口过载，服务器使用另一个关口或服务来响应用户，等待时间设定值较长<br>505——服务器不支持或拒绝支请求头中指定的HTTP版本</p>
+<h2 id="2-4-发送请求"><a href="#2-4-发送请求" class="headerlink" title="2.4 发送请求"></a>2.4 发送请求</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第四步：设置发送请求的内容和发送报送。然后发送请求</span></span><br><span class="line"><span class="keyword">var</span> params = <span class="string">&quot;userName=&quot;</span> + <span class="built_in">document</span>.getElementsByName(<span class="string">&quot;userName&quot;</span>)[<span class="number">0</span>].value + <span class="string">&quot;&amp;userPass=&quot;</span> + <span class="built_in">document</span>.getElementsByName(<span class="string">&quot;userPass&quot;</span>)[<span class="number">0</span>].value + <span class="string">&quot;&amp;time=&quot;</span> + <span class="built_in">Math</span>.random();  <span class="comment">// 增加time随机参数，防止读取缓存 		</span></span><br><span class="line">xmlHttp.setRequestHeader(<span class="string">&quot;Content-type&quot;</span>, <span class="string">&quot;application/x-www-form-urlencoded;charset=UTF-8&quot;</span>);                     <span class="comment">// 向请求添加 HTTP 头，POST如果有数据一定加加！！！！</span></span><br><span class="line">xmlHttp.send(params);</span><br></pre></td></tr></table></figure>
+
+<p>如果需要像 HTML 表单那样 POST 数据，请使用 setRequestHeader() 来添加 HTTP 头。然后在 send() 方法中规定您希望发送的数据。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_37580235/article/details/81459282">https://blog.csdn.net/weixin_37580235/article/details/81459282</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kuku-class-homework-dayao/" rel="tag">kuku-class-homework-dayao</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/" rel="tag">大前端</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/10/19/kuku_class_homework_dayao/class1_environment_setting/windows%E5%AE%89%E8%A3%85nvm%E4%B8%8Enode/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            windows安装nvm与node
+          
+        </div>
+      </a>
+    
+    
+  </nav>
+
+  
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020
+        <i class="ri-heart-fill heart_icon"></i> dayao
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="羽蒙"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/photos">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/love">love</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">Me</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="生来孤岛，何惧孤独" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Javascript的模块化方式 |  羽蒙
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="羽蒙" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-kuku_class_homework_dayao/class2_homework/class2-Javascript的模块化方式"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Javascript的模块化方式
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/10/28/kuku_class_homework_dayao/class2_homework/class2-Javascript%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%E6%96%B9%E5%BC%8F/" class="article-date">
+  <time datetime="2020-10-28T07:48:59.000Z" itemprop="datePublished">2020-10-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/kuku-class-homework-dayao/">kuku-class-homework-dayao</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Javascript的模块化方式：AMD-CMD-CommonJS-ES-Module-UMD"><a href="#Javascript的模块化方式：AMD-CMD-CommonJS-ES-Module-UMD" class="headerlink" title="Javascript的模块化方式：AMD,CMD,CommonJS, ES Module, UMD"></a>Javascript的模块化方式：AMD,CMD,CommonJS, ES Module, UMD</h1><h2 id="JavaScript-模块化方案"><a href="#JavaScript-模块化方案" class="headerlink" title="JavaScript 模块化方案"></a>JavaScript 模块化方案</h2><p> 模块化这个话题在 ES6 之前是不存在的，因此这也被诟病为早期 JavaScript 开发<strong>全局污染</strong>和<strong>依赖管理混乱</strong>问题的源头。这类历史渊源和发展概述在本文将不会提及，因此感兴趣可以自行搜索 JavaScript 发展史进行了解。</p>
+<p>直接进入正题，我们来看看常见的模块化方案都有哪些以及他们都有哪些内容。</p>
+<h2 id="1-CommonJS"><a href="#1-CommonJS" class="headerlink" title="1.CommonJS"></a>1.CommonJS</h2><p> CommonJS 的一个模块就是一个脚本文件，通过执行该文件来加载模块。CommonJS 规范规定，每个模块内部，<code>module</code> 变量代表当前模块。这个变量是一个对象，它的 exports 属性（即 <code>module.exports</code>）是对外的接口。加载某个模块，其实是加载该模块的 <code>module.exports</code> 属性。</p>
+<p> 我们见过这样的模块引用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var myModule &#x3D; require(&#39;module&#39;);</span><br><span class="line">myModule.sayHello();</span><br></pre></td></tr></table></figure>
+
+<p> 这是因为我们把模块的方法定义在了模块的属性上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; module.js</span><br><span class="line">module.exports.sayHello &#x3D; function() &#123;</span><br><span class="line">    console.log(&#39;Hello &#39;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 如果这样写</span><br><span class="line">module.exports &#x3D; sayHello;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 调用则需要改为</span><br><span class="line">var sayHello &#x3D; require(&#39;module&#39;);</span><br><span class="line">sayHello();</span><br></pre></td></tr></table></figure>
+
+<p> <code>require</code> 命令第一次加载该脚本时就会执行整个脚本，然后在内存中生成一个对象（模块可以多次加载，但是在第一次加载时才会运行，结果被缓存），这个结果长成这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  id: &#39;...&#39;,</span><br><span class="line">  exports: &#123; ... &#125;,</span><br><span class="line">  loaded: true,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> Node.js 的模块机制实现就是参照了 CommonJS 的标准。但是 Node.js 额外做了一件事，即为每个模块提供了一个 exports 变量，以指向 module.exports，这相当于在每个模块最开始，写有这么一行代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var exports &#x3D; module.exports;</span><br></pre></td></tr></table></figure>
+
+<p>CommonJS 模块的特点：</p>
+<ul>
+<li>所有代码都运行在模块作用域，不会污染全局作用域。</li>
+<li>独立性是模块的重要特点就，模块内部最好不与程序的其他部分直接交互。</li>
+<li>模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果。要想让模块再次运行，必须清除缓存。</li>
+<li>模块加载的顺序，按照其在代码中出现的顺序。</li>
+</ul>
+<h2 id="2-AMD"><a href="#2-AMD" class="headerlink" title="2. AMD"></a>2. AMD</h2><p> CommonJS 规范很好，但是不适用于浏览器环境，于是有了 AMD 和 CMD 两种方案。AMD 全称 Asynchronous Module Definition，即异步模块定义。它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。除了和 CommonJS 同步加载方式不同之外，AMD 在模块的定义与引用上也有所不同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(id?, dependencies?, factory);</span><br></pre></td></tr></table></figure>
+
+<p> AMD 的模块引入由 define 方法来定义，在 define API 中：</p>
+<ul>
+<li>id：模块名称，或者模块加载器请求的指定脚本的名字；</li>
+<li>dependencies：是个定义中模块所依赖模块的数组，默认为 [“require”, “exports”, “module”]，举个例子比较好理解，当我们创建一个名为 “alpha” 的模块，使用了require，exports，和名为 “beta” 的模块，需要如下书写（示例1）；</li>
+<li>factory：为模块初始化要执行的函数或对象。如果为函数，它应该只被执行一次。如果是对象，此对象应该为模块的输出值；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 示例1</span><br><span class="line">define(&quot;alpha&quot;, [&quot;require&quot;, &quot;exports&quot;, &quot;beta&quot;], function (require, exports, beta) &#123;</span><br><span class="line">  exports.verb &#x3D; function() &#123;</span><br><span class="line">    return beta.verb();</span><br><span class="line">    &#x2F;&#x2F; 或者</span><br><span class="line">    return require(&quot;beta&quot;).verb();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如果模块定义不存在依赖，那么可以直接定义对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(&#123;</span><br><span class="line">  add: function(x, y)&#123;</span><br><span class="line">    return x + y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>而使用时我们依旧通过 require 关键字，它包含两个参数，第一个数组为要加载的模块，第二个参数为回调函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">require([module], callback);</span><br></pre></td></tr></table></figure>
+
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">require([&#39;math&#39;], function (math) &#123;</span><br><span class="line">  math.add(2, 3);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-CMD"><a href="#3-CMD" class="headerlink" title="3.CMD"></a>3.CMD</h2><p>CMD 全称为 Common Module Definition，是 Sea.js 所推广的一个模块化方案的输出。在 CMD define 的入参中，虽然也支持包含 id, deps 以及 factory 三个参数的形式，但推荐的是接受 factory 一个入参，然后在入参执行时，填入三个参数 require、exports 和 module：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">define(function(require, exports, module) &#123;</span><br><span class="line">  var a &#x3D; require(&#39;.&#x2F;a&#39;);</span><br><span class="line">  a.doSomething();</span><br><span class="line">  var b &#x3D; require(&#39;.&#x2F;b&#39;); </span><br><span class="line">  b.doSomething();</span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>通过执行该构造方法，可以得到模块向外提供的接口。在与 AMD 比较上存在两个主要的不同点（来自玉伯<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20351507">回答</a>）：</p>
+<ol>
+<li>对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。CMD 推崇 as lazy as possible.</li>
+<li>CMD 推崇依赖就近，AMD 推崇依赖前置。</li>
+</ol>
+<p>如果说的不清楚，那么我们直接看上面的代码用 AMD 该怎么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define([&#39;.&#x2F;a&#39;, &#39;.&#x2F;b&#39;], function(a, b) &#123;  </span><br><span class="line">  a.doSomething();</span><br><span class="line">  b.doSomething();</span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-UMD"><a href="#4-UMD" class="headerlink" title="4.UMD"></a>4.UMD</h2><p>UMD，全称 Universal Module Definition，即通用模块规范。既然 CommonJs 和 AMD 风格一样流行，那么需要一个可以统一浏览器端以及非浏览器端的模块化方案的规范。</p>
+<p>直接来看看官方给出的 jQuery 模块如何用 UMD 定义的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">(function (factory) &#123;</span><br><span class="line">    if (typeof define &#x3D;&#x3D;&#x3D; &#39;function&#39; &amp;&amp; define.amd) &#123;</span><br><span class="line">        &#x2F;&#x2F; AMD. Register as an anonymous module.</span><br><span class="line">        define([&#39;jquery&#39;], factory);</span><br><span class="line">    &#125; else if (typeof module &#x3D;&#x3D;&#x3D; &#39;object&#39; &amp;&amp; module.exports) &#123;</span><br><span class="line">        &#x2F;&#x2F; Node&#x2F;CommonJS</span><br><span class="line">        module.exports &#x3D; function( root, jQuery ) &#123;</span><br><span class="line">            if ( jQuery &#x3D;&#x3D;&#x3D; undefined ) &#123;</span><br><span class="line">                &#x2F;&#x2F; require(&#39;jQuery&#39;) returns a factory that requires window to</span><br><span class="line">                &#x2F;&#x2F; build a jQuery instance, we normalize how we use modules</span><br><span class="line">                &#x2F;&#x2F; that require this pattern but the window provided is a noop</span><br><span class="line">                &#x2F;&#x2F; if it&#39;s defined (how jquery works)</span><br><span class="line">                if ( typeof window !&#x3D;&#x3D; &#39;undefined&#39; ) &#123;</span><br><span class="line">                    jQuery &#x3D; require(&#39;jquery&#39;);</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    jQuery &#x3D; require(&#39;jquery&#39;)(root);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            factory(jQuery);</span><br><span class="line">            return jQuery;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        &#x2F;&#x2F; Browser globals</span><br><span class="line">        factory(jQuery);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(function ($) &#123;</span><br><span class="line">    $.fn.jqueryPlugin &#x3D; function () &#123; return true; &#125;;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<p>UMD的实现很简单：</p>
+<ul>
+<li>先判断是否支持 AMD（define 是否存在），存在则使用 AMD 方式加载模块；</li>
+<li>再判断是否支持 Node.js 模块格式（exports 是否存在），存在则使用 Node.js 模块格式；</li>
+<li>前两个都不存在，则将模块公开到全局（window 或 global）；</li>
+</ul>
+<h2 id="5-ES-Modules"><a href="#5-ES-Modules" class="headerlink" title="5. ES Modules"></a>5. ES Modules</h2><p>当然，以上说的种种都是社区提供的方案，历史上，JavaScript 一直没有模块系统，直到 ES6 在语言标准的层面上，实现了它。其设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。比如，CommonJS 模块就是对象，输入时必须查找对象属性。而 ES Modules 不是对象，而是通过 <code>export</code> 命令显式指定输出的代码。</p>
+<p>ES Modules 的模块化能力由 <code>export</code> 和 <code>import</code> 组成，<code>export</code> 命令用于规定模块的对外接口，<code>import</code> 命令用于输入其他模块提供的功能。我们可以这样定义一个模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 第一种方式</span><br><span class="line">export var firstName &#x3D; &#39;Michael&#39;;</span><br><span class="line">export var lastName &#x3D; &#39;Jackson&#39;;</span><br><span class="line">export var year &#x3D; 1958;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 第二种方式</span><br><span class="line">var firstName &#x3D; &#39;Michael&#39;;</span><br><span class="line">var lastName &#x3D; &#39;Jackson&#39;;</span><br><span class="line">var year &#x3D; 1958;</span><br><span class="line"></span><br><span class="line">export &#123; firstName, lastName, year &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>然后再这样引入他们：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; firstName, lastName, year &#125; from &#39;module&#39;;</span><br><span class="line">import &#123; firstName as newName &#125; from &#39;module&#39;;</span><br><span class="line">import * as moduleA from &#39;module&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>除以上两种命令外，还有一个 <code>export default</code> 命令用于指定模块的默认输出（一个模块只能有一个默认输出）。如果使用了 <code>export default</code> 语法，在 import 时则可以任意命名。由于 <code>export default</code> 命令的本质是将后面的值，赋给 <code>default</code> 变量，所以也可以直接将一个值写在 <code>export default</code> 之后。当然，引用方式也存在多种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123; default as foo &#125; from &#39;module&#39;;</span><br><span class="line">import foo from &#39;module&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是 Modules 会自动采用严格模式，且 import 命令具有提升效果，会提升到整个模块的头部，首先执行。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kuku-class-homework-dayao/" rel="tag">kuku-class-homework-dayao</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/" rel="tag">大前端</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/10/28/kuku_class_homework_dayao/class2_homework/class2-web%E4%B8%AD%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E4%B8%8E%E5%A4%9A%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            web中单页面应用与多页面应用的区别
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/10/28/travel/travel/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">陕西·西安</div>
+      </a>
+    
+  </nav>
+
+  
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020
+        <i class="ri-heart-fill heart_icon"></i> dayao
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="羽蒙"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/photos">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/love">love</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">Me</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

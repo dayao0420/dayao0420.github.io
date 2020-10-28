@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="生来孤岛，何惧孤独" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    安装适用于Windows的Linux子系统 |  羽蒙
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="羽蒙" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-kuku_class_homework_dayao/class1_environment_setting/安装适用于Windows的Linux子系统"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  安装适用于Windows的Linux子系统
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/10/19/kuku_class_homework_dayao/class1_environment_setting/%E5%AE%89%E8%A3%85%E9%80%82%E7%94%A8%E4%BA%8EWindows%E7%9A%84Linux%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time datetime="2020-10-19T07:59:51.000Z" itemprop="datePublished">2020-10-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/kuku-class-homework-dayao/">kuku-class-homework-dayao</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">892</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">3 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="安装适用于Windows的Linux子系统"><a href="#安装适用于Windows的Linux子系统" class="headerlink" title="安装适用于Windows的Linux子系统"></a>安装适用于Windows的Linux子系统</h2><p>安装成功后，可以通过Hyper终端，连接ubuntu，使用linux命令直接操作Windows中的fs。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://evdokimovm.github.io/windows/zsh/shell/syntax/highlighting/ohmyzsh/hyper/terminal/2017/02/24/how-to-install-zsh-and-oh-my-zsh-on-windows-10.html">https://evdokimovm.github.io/windows/zsh/shell/syntax/highlighting/ohmyzsh/hyper/terminal/2017/02/24/how-to-install-zsh-and-oh-my-zsh-on-windows-10.html</a></p>
+<h3 id="安装步骤如下："><a href="#安装步骤如下：" class="headerlink" title="安装步骤如下："></a>安装步骤如下：</h3><h4 id="1-将windows设置成开发人员模式"><a href="#1-将windows设置成开发人员模式" class="headerlink" title="1.将windows设置成开发人员模式"></a>1.将windows设置成开发人员模式</h4><p>设置——开发者选项——开发人员模式</p>
+<h4 id="2-从windows-store安装ubuntu"><a href="#2-从windows-store安装ubuntu" class="headerlink" title="2.从windows store安装ubuntu"></a>2.从windows store安装ubuntu</h4><p>参考：<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows/wsl/install-win10%EF%BC%8C%E5%8F%AA%E8%A7%81%E6%AD%A5%E9%AA%A46%EF%BC%8C%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85ubuntu%E5%8D%B3%E5%8F%AF%E3%80%82%E5%9C%A8%E5%AE%89%E8%A3%85Ubuntu%E5%B9%B6%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8PC%E5%90%8E%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6%E4%B8%8B%E4%BD%BF%E7%94%A8bash%E6%88%96ubuntu%E5%91%BD%E4%BB%A4%E8%BF%90%E8%A1%8C%E5%AE%83">https://docs.microsoft.com/zh-cn/windows/wsl/install-win10，只见步骤6，直接安装ubuntu即可。在安装Ubuntu并重新启动PC后，可以在命令提示符下使用bash或ubuntu命令运行它</a></p>
+<h4 id="3-安装-Hyper-Terminal"><a href="#3-安装-Hyper-Terminal" class="headerlink" title="3.安装 Hyper Terminal"></a>3.安装 Hyper Terminal</h4><p>去<a target="_blank" rel="noopener" href="https://hyper.is/%EF%BC%8C%E5%AE%89%E8%A3%85%E9%80%82%E5%90%88%E6%9C%AC%E6%9C%BA%E7%9A%84Hyper">https://hyper.is/，安装适合本机的Hyper</a></p>
+<h4 id="4-安装Zsh和Oh-My-Zsh"><a href="#4-安装Zsh和Oh-My-Zsh" class="headerlink" title="4.安装Zsh和Oh My Zsh"></a>4.安装Zsh和Oh My Zsh</h4><p>启动ubuntu，安装zsh和 oh-my-zsh</p>
+<p>安装Zsh：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;sudo apt-get install zsh&#96;</span><br></pre></td></tr></table></figure>
+
+<p>oh-my-zsh地址：<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">https://github.com/ohmyzsh/ohmyzsh</a></p>
+<p>作用：</p>
+<p>1.zsh和bash是两个不同的概念，zsh是bash的增强版，zsh更加强大。通常zsh配置起来非常麻烦，且相当的复杂，所以oh-my-zsh是为了简化zsh的配置而开发的，因此oh-my-zsh算是zsh的配置。</p>
+<p>2.<code>oh-my-zsh</code> 的强大：</p>
+<p>a.<strong>主题选择</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vim ~&#x2F;.zshrc</span><br><span class="line">#修改主题名称</span><br><span class="line">ZSH_THEME&#x3D;&quot;ys&quot;</span><br><span class="line">#然后重新加载配置文件，每次修改配置文件后，都需要再次加载配置文件才能生效</span><br><span class="line">$ source ~&#x2F;.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>b.<strong>插件</strong></p>
+<p>oh-my-zsh默认安装了git插件，在git仓库中，会提示当前所在的分支。此外，还有大量优秀的插件，比如：extract、z、zsh-autosuggestions，具体可查看插件仓库<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins">https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins</a>.</p>
+<p>安装oh-my-zsh：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;curl -L https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;robbyrussell&#x2F;oh-my-zsh&#x2F;master&#x2F;tools&#x2F;install.sh | bash&#96;</span><br></pre></td></tr></table></figure>
+
+<p>注意：这里容易出现443，需要在hosts配置文件中增加199.232.68.133 raw.githubusercontent.com</p>
+<p>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;sudo vim &#x2F;etc&#x2F;hosts&#96;</span><br></pre></td></tr></table></figure>
+
+<p>hosts文件位于” C:\Windows\System32\drivers\etc “目录下，主要作用是定义IP地址和主机名的映射关系，是一个映射IP地址和主机名的规定。在浏览器中通过域名访问网站，首先查看hosts文件中是否存在域名与IP的地址转换，如果存在则直接根据IP地址进行访问；否则向DNS服务器发送请求，根据返回结果中的IP进行访问。</p>
+<p>hosts文件作用：</p>
+<p>​    1.提升网站的访问速度。如果在hosts中配置了常用的网址和IP的映射关系，就省去了向DNS服务器发送请求获取IP的过程，从而更快的访问网站速度。</p>
+<p>​    2.记录常用IP地址</p>
+<h4 id="5-配置并运行我的Zsh"><a href="#5-配置并运行我的Zsh" class="headerlink" title="5.配置并运行我的Zsh"></a>5.配置并运行我的Zsh</h4><p>打开ubuntu，执行 chsh -s /usr/bin/zsh，它将zsh作为默认的shell环境自动运行</p>
+<h4 id="6-配置并运行超级终端"><a href="#6-配置并运行超级终端" class="headerlink" title="6.配置并运行超级终端"></a>6.配置并运行超级终端</h4><p>安装超级终端后，打开<code>%USERPROFILE%/.hyper.js</code>配置文件并替换行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell: &#39;&#39;,</span><br><span class="line">shellArgs: [&#39;--login&#39;],</span><br></pre></td></tr></table></figure>
+
+<p>替换为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell: &#39;C:\\Windows\\System32\\cmd.exe&#39;,</span><br><span class="line">shellArgs: [&#39;--login&#39;, &#39;-i&#39;, &#39;&#x2F;c wsl&#39;],</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-更换终端"><a href="#7-更换终端" class="headerlink" title="7.更换终端"></a>7.更换终端</h4><p>可以使用下列命令在不同终端间切换。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh <span class="comment">#切换为zsh</span></span><br><span class="line">chsh -s /bin/bash <span class="comment">#切换回bash</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="8-总结"><a href="#8-总结" class="headerlink" title="8.总结"></a>8.总结</h4><p>​    zsh是ubuntu的一个命令行插件，兼容 Bash，据传说 99% 的 Bash 操作 和 Zsh 是相同的，默认 CentOS / Ubuntu / Mac 系统用的是 Bash。</p>
+<p>​    要注意的是，如果之前有配置在bash中的配置文件，切换了终端之后会无法使用，需要在zsh终端重新配置。一般来说，bash的配置文件在<del>/.bashrc 或者</del>/.bash_profile中，而zsh则在~/.zshrc中。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kuku-class-homework-dayao/" rel="tag">kuku-class-homework-dayao</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/" rel="tag">大前端</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/10/19/kuku_class_homework_dayao/class1_environment_setting/http-server%E5%AE%89%E8%A3%85%E5%92%8C%E5%90%AF%E5%8A%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            http-server安装和启动
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/10/19/kuku_class_homework_dayao/class1_environment_setting/VPN%E9%85%8D%E7%BD%AE/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">VPN配置</div>
+      </a>
+    
+  </nav>
+
+  
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020
+        <i class="ri-heart-fill heart_icon"></i> dayao
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="羽蒙"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/photos">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/love">love</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">Me</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

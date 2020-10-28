@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="生来孤岛，何惧孤独" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    JSON是什么，和XML，YAML的区别 |  羽蒙
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="羽蒙" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-kuku_class_homework_dayao/class2_homework/class2-JSON、XML，YAML的区别"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  JSON是什么，和XML，YAML的区别
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/10/28/kuku_class_homework_dayao/class2_homework/class2-JSON%E3%80%81XML%EF%BC%8CYAML%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time datetime="2020-10-28T07:56:17.000Z" itemprop="datePublished">2020-10-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/kuku-class-homework-dayao/">kuku-class-homework-dayao</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">4 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="JSON是什么，和XML，YAML的区别"><a href="#JSON是什么，和XML，YAML的区别" class="headerlink" title="JSON是什么，和XML，YAML的区别"></a>JSON是什么，和XML，YAML的区别</h1><h5 id="三者都是序列化语言"><a href="#三者都是序列化语言" class="headerlink" title="三者都是序列化语言"></a>三者都是序列化语言</h5><ul>
+<li><p>JSON:J”avascript Object Notation”(javascript对象表示法) (.json)</p>
+</li>
+<li><p>XML:”EXtensible Markup Language”(可扩展标记语言) (.xml)</p>
+</li>
+<li><p>YAML:”YAML Ain’t a Markup Language”(YAML 不是一种标记语言) (.yaml)</p>
+</li>
+<li><p>YAML使用缩进来定义结构化数据，因此每个YAML中的数据块通过空白的数量来区分</p>
+</li>
+<li><p>三者文件的扩展名都与其名称对应， .yaml for YAML, .json for JSON, .xml for XML，比较容易记忆。</p>
+</li>
+<li><p>实际上，三者的扩展名都是比较随意的，对开发者和应用来说重要的是其文件格式，内容类型和数据结构。(译者按，重要的是内容，例如.yml和.yaml几乎无差别。.js的文件中依然可以存储json).</p>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3></li>
+</ul>
+<p>1.代码书写方式不同</p>
+<blockquote>
+<p>**JSON: **</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;sites&quot;: [</span><br><span class="line">    &#123; &quot;name&quot;:&quot;菜鸟教程&quot; , &quot;url&quot;:&quot;www.runoob.com&quot; &#125;, </span><br><span class="line">    &#123; &quot;name&quot;:&quot;google&quot; , &quot;url&quot;:&quot;www.google.com&quot; &#125;, </span><br><span class="line">    &#123; &quot;name&quot;:&quot;微博&quot; , &quot;url&quot;:&quot;www.weibo.com&quot; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>XML:</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;sites&gt;</span><br><span class="line">  &lt;site&gt;</span><br><span class="line">    &lt;name&gt;菜鸟教程&lt;&#x2F;name&gt; &lt;url&gt;www.runoob.com&lt;&#x2F;url&gt;</span><br><span class="line">  &lt;&#x2F;site&gt;</span><br><span class="line">  &lt;site&gt;</span><br><span class="line">    &lt;name&gt;google&lt;&#x2F;name&gt; &lt;url&gt;www.google.com&lt;&#x2F;url&gt;</span><br><span class="line">  &lt;&#x2F;site&gt;</span><br><span class="line">  &lt;site&gt;</span><br><span class="line">    &lt;name&gt;微博&lt;&#x2F;name&gt; &lt;url&gt;www.weibo.com&lt;&#x2F;url&gt;</span><br><span class="line">  &lt;&#x2F;site&gt;</span><br><span class="line">&lt;&#x2F;sites&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>YAML:</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sites:</span><br><span class="line">   -</span><br><span class="line">       name:菜鸟教程</span><br><span class="line">       url:www.runoob.com</span><br><span class="line">   -</span><br><span class="line">       name:google</span><br><span class="line">       url:www.google.com</span><br><span class="line">   -  </span><br><span class="line">       name:微博</span><br><span class="line">       url:www.weibo.com</span><br></pre></td></tr></table></figure>
+
+<p>2.JSON 与 XML 的相同之处：</p>
+<ul>
+<li>JSON 和 XML 数据都是 “自我描述” ，都易于理解。</li>
+<li>JSON 和 XML 数据都是有层次的结构</li>
+<li>JSON 和 XML 数据可以被大多数编程语言使用</li>
+<li></li>
+</ul>
+<p>JSON 与 XML 的不同之处：</p>
+<ul>
+<li>JSON 不需要结束标签</li>
+<li>JSON 更加简短</li>
+<li>JSON 读写速度更快</li>
+<li>JSON 可以使用数组</li>
+</ul>
+<blockquote>
+<p><strong>最大的不同是</strong>：XML 需要使用 XML 解析器来解析，JSON 可以使用标准的 JavaScript 函数来解析。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/js/javascript-json-parse.html">JSON.parse()</a>: 将一个 JSON 字符串转换为 JavaScript 对象。</li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/js/javascript-json-stringify.html">JSON.stringify()</a>: 于将 JavaScript 值转换为 JSON 字符串。</li>
+</ul>
+</blockquote>
+<h4 id="为什么-JSON-比-XML-更好？"><a href="#为什么-JSON-比-XML-更好？" class="headerlink" title="为什么 JSON 比 XML 更好？"></a>为什么 JSON 比 XML 更好？</h4><p>XML 比 JSON 更难解析。</p>
+<p>JSON 可以直接使用现有的 JavaScript 对象解析。</p>
+<p>针对 AJAX 应用，JSON 比 XML 数据加载更快，而且更简单：</p>
+<p>使用 XML</p>
+<ul>
+<li>获取 XML 文档</li>
+<li>使用 XML DOM 迭代循环文档</li>
+<li>接数据解析出来复制给变量</li>
+</ul>
+<p>使用 JSON</p>
+<ul>
+<li>获取 JSON 字符串</li>
+<li>JSON.Parse 解析 JSON 字符串</li>
+</ul>
+<h3 id="3-YAML使用场景"><a href="#3-YAML使用场景" class="headerlink" title="3.YAML使用场景"></a>3.YAML使用场景</h3><p>对于序列化语言来说，使用场景如下：</p>
+<ul>
+<li>与服务器之间传输数据</li>
+<li>使用一个配置文件来配置应用，这些文件声明对应参数和相应取值</li>
+<li>在同一个应用不同组件之间转换数据</li>
+<li>中间数据存储 针对此类场景，YAML有一些明确的优势相比于其他同类语言。也是为什么现在越来越多的开发者使用其的地方。</li>
+</ul>
+<h4 id="YAML的优势"><a href="#YAML的优势" class="headerlink" title="YAML的优势"></a>YAML的优势</h4><ul>
+<li>YAML中没有额外的定界符，所以相比JSON或者XML更轻量级。</li>
+<li>没有额外定界符，所以更易读(这里持原作者和译者都持保留观点，不少开发者认为有定界符的可读性更强。)</li>
+<li>YAML使数据更易于理解，因此常用于配置文件中(观点同上)</li>
+<li>应用比价哦广泛，除配置文件之外，传输数据和中间存储都有实践。</li>
+<li>YAML是JSON 的超集，对于合法的JSON代码，同样可以被YAML解析，这样对于使用JSON和YAML的应用来说，可以使用一个解析器完成两种解析。 然而其并没有如期望中那样受欢迎，具体而言，因为不同的序列化语言都有其特定的适宜语言或者场景（下文可以提到），并且YAML有一些不足相较于其他广泛使用的序列化语言。</li>
+</ul>
+<h4 id="YAML的不足"><a href="#YAML的不足" class="headerlink" title="YAML的不足"></a>YAML的不足</h4><ul>
+<li>相对年轻，早期很多应用已经使用JONS或者XML来构建，对于开发者来说迁移至YAML成本是十分高的。 举例，假如我们负责的项目是使用XML的，就算我们开发独立的插件也会倾向于XML以便更加契合。</li>
+<li>流行广泛程度反向作用域生态系统，例如XML 有着比YAML极为成熟的生态。JSON从2000年开始出现，同样被高度采用。因此在YAML上可以找到对JSON的支持(译者注：既有向现实妥协的味道，也是聪明的做法)</li>
+<li>YAML中有很多方式来体系化数据层级，因此处理时会相对复杂些。性能上相对于XML和JSON会有差别。</li>
+<li>可能一些开发人员发现很难使用其复杂的缩进格式</li>
+</ul>
+<h1 id="变量提升练习"><a href="#变量提升练习" class="headerlink" title="变量提升练习"></a>变量提升练习</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;下面题目输出结果</span><br><span class="line">var a &#x3D; 2;</span><br><span class="line">function a()&#123;</span><br><span class="line">    console.log(3);</span><br><span class="line">&#125;</span><br><span class="line">console.log(typeof a);</span><br></pre></td></tr></table></figure>
+
+<p>//number</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kuku-class-homework-dayao/" rel="tag">kuku-class-homework-dayao</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/" rel="tag">大前端</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/10/28/kuku_class_homework_dayao/class2_homework/class2-Javascript%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%94%99%E8%AF%AF%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%85%B3%E9%94%AE%E5%AD%97/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Javascript的基本错误类型与保留关键字
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/10/28/kuku_class_homework_dayao/class2_homework/class2-web%E4%B8%AD%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E4%B8%8E%E5%A4%9A%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">web中单页面应用与多页面应用的区别</div>
+      </a>
+    
+  </nav>
+
+  
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020
+        <i class="ri-heart-fill heart_icon"></i> dayao
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="羽蒙"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/photos">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/love">love</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">Me</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>
